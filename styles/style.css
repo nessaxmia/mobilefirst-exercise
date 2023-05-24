@@ -1,0 +1,345 @@
+@charset "UTF-8";
+/* CSS Document */
+
+@import url ("normalize.css");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+
+
+* {
+	box-sizing: border-box;
+}
+
+/* GENERAL STYLES */
+
+html {
+	font-size: 100%;
+}
+
+body {
+	font: 1rem/1.5rem 'Open Sans', sans-serif;
+	color: #575757;
+	margin: 0;
+}
+
+a, a:visited {
+	color: #900201;
+	text-decoration: none;
+	transition: all .5s;
+}
+
+a:hover, a:visited:hover {
+	color: #3d0908;
+}
+
+h1, h2, h3 {
+	font-family: 'Open Sans', sans-serif;
+	text-transform: capitalize;
+}
+
+h1 {
+	font-size: 1.375rem;
+	line-height: 2.1875rem;
+}
+
+h2 {
+	margin: 0;
+}
+
+.flex {
+	display: flex;
+	justify-content: space-between;
+}
+
+.container {
+	width: 95%;
+	margin: 0 auto;
+}
+
+
+/* NAVIGATION STYLES */
+#menuToggle {
+  display: block;
+  position: relative;
+  top: 5px;
+  right: 0px;
+  z-index: 1;  
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#menuToggle a {
+  text-decoration: none;
+  color: #232323;
+  
+  transition: color 0.3s ease;
+}
+
+#menuToggle a:hover {
+  color: tomato;
+}
+
+#menuToggle input {
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+  cursor: pointer;
+  opacity: 0; /* hide this */
+  z-index: 2; /* and place it over the hamburger */
+  -webkit-touch-callout: none;
+}
+
+#menuToggle span {
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  background: #cdcdcd;
+  border-radius: 3px;
+  z-index: 1;
+  transform-origin: 4px 0px;
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+}
+
+#menuToggle span:first-child {
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2) {
+  transform-origin: 0% 100%;
+}
+
+/* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+#menuToggle input:checked ~ span {
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #232323;
+}
+
+#menuToggle input:checked ~ span:nth-last-child(3) {
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+#menuToggle input:checked ~ span:nth-last-child(2) {
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+#menu {
+	display: none;
+  position: absolute;
+  width: 300px;
+  margin: -100px 0 0 -150px;
+  padding: 50px;
+  padding-top: 125px;
+  background: #ededed;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  
+  transform-origin: 0% 0%;
+  transform: translate(100%, 0);
+  
+  transition: all 1s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+#menu li {
+  padding: 10px 0;
+  font-size: 22px;
+}
+
+/*
+ * And let's slide it in from the left
+ */
+#menuToggle input:checked ~ ul
+{
+  transform: none;
+	display: block;
+}
+
+
+/*--page header --*/
+ 
+header {
+    padding-top: 1.5rem;
+    padding-bottom: 3rem;
+}
+
+/*--featred article --*/
+#featured img {
+    width: 100%;
+}
+
+.link {
+text-align: right;
+}
+
+.stories {
+    margin-bottom: 2rem;
+}
+
+.stories img {
+display: block;
+    height: 6rem;
+    margin-right: 1rem;
+}
+
+.stories h1{
+    line-height: 1.5rem;
+}
+
+
+.no-mobile {
+    display: none;
+}
+
+footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+    height: 5.5rem;
+    color: white;
+    padding-top: 1.4rem;
+    padding-bottom: 1rem;
+}
+
+footer img{
+    width: 7.5rem;
+}
+
+footer p{
+    line-height: .5rem;
+}
+
+@media screen and (min-width: 712px) {
+    .stories img {
+        height: 12rem;
+    }
+    
+    .stories h1 {
+        font-size: 2rem;
+        line-height: 2.5rem;
+    }
+    
+    .no-mobile {
+        display: block;
+    }
+}
+
+
+@media screen and (min-width: 1440px) {
+    #page-header {
+        background-color: #F2EFF0;
+        width: 100%;
+        padding-left: 6.25rem;
+        padding-right: 6.25rem;
+    }
+    
+    header {
+        padding-bottom: 1.5rem;
+    }
+    
+    .no-mobile.desktop {
+display: none;
+    }
+    
+    #featured {
+        display: flex;
+        width: 100%;
+        
+    }
+    
+    #featured h1 {
+        font-size: 2.5rem;
+        line-height: 3rem;
+    }
+    
+    .desktop-view {
+        display: block;
+        padding-right: 23rem;
+        margin-left: 1.6rem; 
+       
+    }
+    
+    .desktop-row {
+        display: flex;
+       width: 100%;
+        margin-top: 6.8rem;
+        padding-left: 6rem;
+      
+
+    }
+    
+    .desktop-column {
+        display: block;
+        width: 37.5rem;
+    }
+    
+    .link {
+        display: none;
+    }
+    
+    .link.desktop {
+        display: block;
+    }
+    
+    .desktop-backgroundimg.first{
+        height: 21rem;
+        background-image: url(../images/desktop/Rectangle%209desktop.jpg);
+    }
+    
+    .desktop-backgroundimg.second {
+        height: 21rem;
+background-image: url(../images/desktop/Rectangle%2010desktop.jpg);
+    }
+    
+    .desktop-backgroundimg.third {
+        width: 44rem;
+    background-image: url(../images/desktop/Rectangle%2011desktop.jpg);
+    } 
+    
+    .desktop-backgroundimg.fourth {
+       width: 44rem;
+        background-image: url(../images/desktop/Rectangle%2012desktop.jpg);
+    }
+    
+    
+    .stories img {
+        display: none;
+    }
+    
+    .stories h1 {
+        font-size: 2rem;
+        line-height: 2.5rem;
+    }
+    
+    .no-mobile {
+        display: block;
+    }
+    .desktop-singlecolumn {
+        margin-top: 18rem;
+        width: 89rem;
+    }
+    
+    .desktop-p {
+        width: 40rem;
+        margin-left: 2.9rem;
+        
+    }
+
+footer {
+    padding-top: 4.75rem;
+    padding-bottom: 4.75rem;
+}
+
+
